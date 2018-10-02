@@ -10,8 +10,8 @@ class User(models.Model):
 	# password = models.CharField(max_length=15)
 	name = models.CharField(max_length=20)
 	# email = models.CharField(max_length=25)
-	is_authorised = models.BooleanField()
-	is_activated = models.BooleanField()
+	is_authorised = models.BooleanField(default=False)
+	is_activated = models.BooleanField(default=False)
 	designation = models.CharField(max_length=20)
 	police_station = models.CharField(max_length=25)
 

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+{% include "navbar.html" %}
+
+<form method="Get" action='/home'>
+<input type="text" name="q" placeholder="Search criminal">
+<input type="submit" name="submit">
+</form>
+
+
+
+{# {{ obj}} #}
+{% for i in obj %}
+
+{{ i  }}
+{% if user.is_authorised %}
+
+{# <input type="submit" value="Edit"><br> #}
+<a href="">Edit</a>
+
+{% endif %}
+
+
+{% endfor %}
+
+{% endblock %}

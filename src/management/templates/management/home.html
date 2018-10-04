@@ -14,13 +14,13 @@
 {# {{ obj}} #}
 {% for i in obj %}
 
-{{ i  }}
+<a href="{% url 'detail' i.id %}">{{ i  }}</a>
 {% if user.is_authorised %}
 
 {# <input type="submit" value="Edit"><br> #}
-<a href="{% url 'update-profile' i.id%}">Edit</a><br>
-
+<a href="{% url 'update-profile' i.id%}">Edit</a>
 {% endif %}
+<br>
 
 
 {% endfor %}

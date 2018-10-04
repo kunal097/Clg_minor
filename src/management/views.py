@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .models import User, Criminal
-from .forms import UserForm
+from .forms import UserForm,CriminalForm
 
 @login_required
 def complete_profile(request):
@@ -53,6 +53,73 @@ def home(request):
 	return render(request,'management/home.html',{'obj':obj,'user':user})
 
 
-def update_criminal(request,id):
-	obj = Criminal.objects.get(id=id)
-	return HttpResponse(obj)
+# def update_criminal(request,id):
+# 	# obj = Criminal.objects.get(id=id)
+	
+# 	form = CriminalForm(request.POST or None)
+# 	if form.is_valid():
+
+# 		print('************%%$%$%$%$%$%$%')
+
+# 		first_name = form.cleaned_data['first_name']
+# 		last_name = form.cleaned_data['last_name']
+# 		aadhar_number = form.cleaned_data['aadhar_number']
+# 		dob = form.cleaned_data['dob']
+# 		email = form.cleaned_data['email']
+# 		fathers_name = form.cleaned_data['fathers_name']
+# 		mothers_name = form.cleaned_data['mothers_name']
+# 		mobile_number = form.cleaned_data['mobile_number']
+# 		nationality = form.cleaned_data['nationality']
+# 		address = form.cleaned_data['address']
+# 		no_of_family_member = form.cleaned_data['no_of_family_member']
+
+# 		obj = Criminal.objects.filter(id=id).update('first_name'=first_name,'last_name'=last_name,'aadhar_number'=aadhar_number,'dob'=dob,'email'=email,'fathers_name'=fathers_name,'mothers_name'=mothers_name,'mobile_number'=mobile_number,'nationality'=nationality,'address'=address,'no_of_family_member'=no_of_family_member)
+		
+
+# 		# obj.save()
+# 		# form = CriminalForm(obj)
+
+
+
+# 		# pass
+# 	# return HttpResponse(obj)
+# 	return render(request , 'management/update-profile.html',{'form':form})
+
+
+from django.views.generic import UpdateView
+
+
+class update_criminal(UpdateView):
+    model = Criminal
+    template_name = 'management/update-profile.html'
+    fields = ['first_name','last_name','aadhar_number','dob','email','fathers_name','mothers_name','mobile_number','nationality','address','no_of_family_member'
+]
+ 
+    def get_object(self, queryset=None):
+        id = self.kwargs['id']
+        return self.model.objects.get(id=id)
+ 
+    def form_valid(self, form):
+        form.save()
+        # return HttpResponseRedirect(reverse('demos-models-dbcrud-list'))
+        return redirect('/')
+ 
+
+
+
+
+def profile_detail(request,id):
+	criminal = Criminal.objects.get(id=id)
+	# print(criminal)
+	# print(criminal.first_name)
+
+
+	return render(request,'management/detail-profile.html',{'criminal':criminal})
+
+
+
+def past_record(request,id):
+
+	criminal = Criminal.objects.get(id=id)
+	record = Record.objects.filter(criminal=criminal)
+	return render(request,'management/records.html',{'record':record})

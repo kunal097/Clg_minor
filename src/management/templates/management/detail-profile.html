@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+{% include "navbar.html" %}
+{# {{ criminal}} #}
+
+{# {{ criminal }} #}
+
+
+<div>
+	<h2>Profile</h2>
+	<p>First Name : {{ criminal.first_name }}</p>
+	<p>Last Name : {{ criminal.last_name }}</p>
+	<p>Aadhar : {{ criminal.aadhar_number }}</p>
+	<p>Date of Birth  : {{ criminal.dob }}</p>
+	<p>Email  : {{ criminal.email }}</p>
+	<p>Father's Name  : {{ criminal.fathers_name }}</p>
+	<p>Mother's Name  : {{ criminal.mothers_name }}</p>
+	<p>Mobile number  : {{ criminal.mobile_number }}</p>
+	<p>Nationality  : {{ criminal.nationality }}</p>
+	<p>Address  : {{ criminal.address }}</p>
+	<p>Number of family member  : {{ criminal.no_of_family_member }}</p>
+	
+
+
+</div>
+
+
+
+<a href="{% url 'record' criminal.id %}">Past History</a>
+{% endblock %}
+

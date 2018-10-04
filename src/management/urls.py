@@ -1,11 +1,14 @@
 from django.urls import path
-from .views import complete_profile,home,update_criminal
+from .views import complete_profile,home,update_criminal,profile_detail
+
 
 
 urlpatterns = [
     
     path('home/', home,name='home'),
-    path('update_profile/<id>', update_criminal,name='update-profile'),
+    path('update_profile/<id>', update_criminal.as_view(),name='update-profile'),
+    path('detail/<id>',profile_detail,name='detail'),
+    path('record/<id>',past_record,name='record'),
     path('', complete_profile,name='complete-profile'),
     
 ]

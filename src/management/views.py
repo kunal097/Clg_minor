@@ -55,4 +55,4 @@ def home(request):
 
 def update_criminal(request,id):
 	obj = Criminal.objects.get(id=id)
-	# return HttpResponse(obj)
+	return HttpResponse(obj)

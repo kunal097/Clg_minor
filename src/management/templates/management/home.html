@@ -18,7 +18,7 @@
 {% if user.is_authorised %}
 
 {# <input type="submit" value="Edit"><br> #}
-<a href="">Edit</a>
+<a href="{% url 'update-profile' i.id%}">Edit</a><br>
 
 {% endif %}
 

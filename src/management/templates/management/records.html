@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+{% include "navbar.html" %}
+
+<p ><h2 align="center">Records </h2> </p>
+
+{% if record %}
+{% for i in record %}
+{{ i.criminal  }}<br>
+{{ i.alloted_jail }}<br>
+{{ i.crime }}<br>
+{{ i.crime_date }}<br>
+{{ i.police_act }}<br>
+{{ i.punishment }}<br>
+
+{% endfor %}
+{% else %}
+<p>No Records to Display</p>
+{% endif %}
+<a href="{% url 'home' %}">Go to home</a>
+
+
+
+
+{% endblock %}

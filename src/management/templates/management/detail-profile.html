@@ -7,6 +7,13 @@
 
 {# {{ criminal }} #}
 
+{% if user.is_authorised %}
+
+{# <input type="submit" value="Edit"><br> #}
+
+<a href="{% url 'add-record' criminal.id %}">Add Past Record</a>
+{% endif %}
+
 
 <div>
 	<h2>Profile</h2>

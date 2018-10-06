@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-from .models import User, Criminal
-from .forms import UserForm,CriminalForm
+from .models import User, Criminal , Record
+from .forms import UserForm,CriminalForm,RecordForm
 
 @login_required
 def complete_profile(request):
@@ -112,9 +112,15 @@ def profile_detail(request,id):
 	criminal = Criminal.objects.get(id=id)
 	# print(criminal)
 	# print(criminal.first_name)
+	ruser=request.user
+	print('6472647236478')
+	user=User.objects.get(user=ruser)
+	# print("TTTTTTTTTTTTT")
+	# print(user.is_authorised)
 
 
-	return render(request,'management/detail-profile.html',{'criminal':criminal})
+
+	return render(request,'management/detail-profile.html',{'criminal':criminal,'user':user})
 
 
 
@@ -122,4 +128,28 @@ def past_record(request,id):
 
 	criminal = Criminal.objects.get(id=id)
 	record = Record.objects.filter(criminal=criminal)
+	print('*******')
+	print(record)
 	return render(request,'management/records.html',{'record':record})
+
+
+def add_record(request,id):
+	criminal=Criminal.objects.get(id=id)
+	form = RecordForm(request.POST or None)
+	# form.criminal=criminal.
+	if form.is_valid():
+		alloted_jail= form.cleaned_data['alloted_jail']
+		crime= form.cleaned_data['crime']
+		crime_date= form.cleaned_data['crime_date']
+		police_act= form.cleaned_data['police_act']
+		punishment= form.cleaned_data['punishment']
+		obj=form.save(commit=False)
+
+		obj.criminal=criminal
+		obj.save()
+		# pass
+	
+	# print()
+	return render(request,'management/add-record.html',{'form':form})
+
+

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block content%}
+
+{% include "navbar.html" %}
+
+<label>Username : </label>{{ profile.user }}<br>
+<label>Name : </label>{{ profile.name }}<br>
+<label>Designation : </label>{{ profile.designation }}<br>
+<label>Police Station : </label>{{ profile.police_station }}<br>
+
+<a href="{% url 'home' %}">Home </a>
+
+{% endblock %}

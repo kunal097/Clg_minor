@@ -10,13 +10,22 @@
 <input type="submit" name="submit">
 </form>
 
+{% if cuser.is_authorised %}
+
+<a href="{% url 'add-criminal' %}">Add Criminal </a>
+
+
+
+
+{% endif %}
+
 
 
 {# {{ obj}} #}
 {% for i in obj %}
 
 <a href="{% url 'detail' i.id %}">{{  i  }}</a>
-{% if user.is_authorised %}
+{% if cuser.is_authorised %}
 
 {# <input type="submit" value="Edit"><br> #}
 <a href="{% url 'update-profile' i.id%}">Edit</a>

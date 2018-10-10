@@ -50,7 +50,7 @@ def home(request):
 	user = User.objects.get(user=request.user)
 	print(user)
 	print(user.is_authorised)
-	return render(request,'management/home.html',{'obj':obj,'user':user})
+	return render(request,'management/home.html',{'obj':obj,'cuser':user})
 
 
 # def update_criminal(request,id):
@@ -88,7 +88,7 @@ def home(request):
 
 from django.views.generic import UpdateView
 
-
+# @login_required
 class update_criminal(UpdateView):
     model = Criminal
     template_name = 'management/update-profile.html'
@@ -107,7 +107,7 @@ class update_criminal(UpdateView):
 
 
 
-
+@login_required
 def profile_detail(request,id):
 	criminal = Criminal.objects.get(id=id)
 	# print(criminal)
@@ -123,7 +123,7 @@ def profile_detail(request,id):
 	return render(request,'management/detail-profile.html',{'criminal':criminal,'user':user})
 
 
-
+@login_required
 def past_record(request,id):
 
 	criminal = Criminal.objects.get(id=id)
@@ -132,7 +132,7 @@ def past_record(request,id):
 	print(record)
 	return render(request,'management/records.html',{'record':record})
 
-
+@login_required
 def add_record(request,id):
 	criminal=Criminal.objects.get(id=id)
 	form = RecordForm(request.POST or None)
@@ -147,9 +147,23 @@ def add_record(request,id):
 
 		obj.criminal=criminal
 		obj.save()
+		return redirect(home)
 		# pass
 	
 	# print()
 	return render(request,'management/add-record.html',{'form':form})
 
 
+
+from django.views.generic.edit import CreateView
+
+class Reg_criminal(CreateView):
+    model = Criminal
+    fields = '__all__'
+   
+
+@login_required
+def profile(request):
+	user = User.objects.get(user=request.user)
+	# return HttpResponse(user.designation)
+	return render(request, "management/profile.html" , {'profile':user} )

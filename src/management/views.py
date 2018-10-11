@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from .models import User, Criminal , Record
 from .forms import UserForm,CriminalForm,RecordForm
+from django.core.mail import mail_admins
 
 @login_required
 def complete_profile(request):
@@ -27,7 +28,15 @@ def complete_profile(request):
 
 		obj=form.save(commit=False)
 		obj.user = request.user
+		print('*&*&*&*&*')
+		print(obj.user.email)
 		obj.save()
+
+
+		sender = obj.user.email
+		subject = "Authorization"
+		message = "Please activate my account and give authorization. Account Details \n username: {}\n email : {}".format(obj.user.username,obj.user.email)
+		mail_admins(subject, message)
 
 		# form=UserForm()
 		return render(request , 'management/thankyou.html',{'name':request.user})
@@ -120,7 +129,7 @@ def profile_detail(request,id):
 
 
 
-	return render(request,'management/detail-profile.html',{'criminal':criminal,'user':user})
+	return render(request,'management/detail-profile.html',{'criminal':criminal,'cuser':user})
 
 
 @login_required

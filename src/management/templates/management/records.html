@@ -8,20 +8,61 @@
 
 {% if record %}
 {% for i in record %}
-{{ i.criminal  }}<br>
-{{ i.alloted_jail }}<br>
-{{ i.crime }}<br>
-{{ i.crime_date }}<br>
-{{ i.police_act }}<br>
-{{ i.punishment }}<br>
+
+
+
+<div class="container" >
+	<div  class="row justify-content-center">
+		<h3 style="padding-bottom:10px;"><button type="button" class="btn btn-secondary btn-lg" disabled>Details</button></h3>
+
+<table class="table table-borderless">
+  
+  <tbody>
+    <tr>
+      <th scope="row">Criminal Name</th>
+      <td>{{ i.criminal  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Alloted Jail</th>
+      <td>{{ i.alloted_jail }}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Crime Detail</th>
+      <td colspan="2">{{ i.crime }}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Crime Date </th>
+      <td colspan="2">{{ i.crime_date }}</td>
+
+    </tr>
+
+      <th scope="row">Police Action </th>
+      <td colspan="2">{{ i.police_act }}</td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Punishment  </th>
+      <td colspan="2">{{ i.punishment }}</td>
+  
+    </tr>
+    
+  </tbody>
+</table>
+
+</div>
+</div>
+
 
 {% endfor %}
 {% else %}
 <p>No Records to Display</p>
 {% endif %}
-<a href="{% url 'home' %}">Go to home</a>
+<div class="container">
+<a class="btn btn-outline-success" href="{% url 'home' %}">Go to home</a>
 
-
+</div>
 
 
 {% endblock %}

@@ -7,35 +7,87 @@
 {# {{ criminal}} #}
 
 {# {{ criminal }} #}
-
-{% if user.is_authorised %}
+<div class="container">
+{% if cuser.is_authorised %}
 
 {# <input type="submit" value="Edit"><br> #}
 
-<a href="{% url 'add-record' criminal.id %}">Add Past Record</a>
+<a class="btn btn-outline-success" href="{% url 'add-record' criminal.id %}">Add Past Record</a>
 {% endif %}
-
-
-<div>
-	<h2>Profile</h2>
-	<p>First Name : {{ criminal.first_name  }}</p>
-	<p>Last Name : {{ criminal.last_name }}</p>
-	<p>Aadhar : {{ criminal.aadhar_number }}</p>
-	<p>Date of Birth  : {{ criminal.dob }}</p>
-	<p>Email  : {{ criminal.email }}</p>
-	<p>Father's Name  : {{ criminal.fathers_name }}</p>
-	<p>Mother's Name  : {{ criminal.mothers_name }}</p>
-	<p>Mobile number  : {{ criminal.mobile_number }}</p>
-	<p>Nationality  : {{ criminal.nationality }}</p>
-	<p>Address  : {{ criminal.address }}</p>
-	<p>Number of family member  : {{ criminal.no_of_family_member }}</p>
-	
-
-
 </div>
 
 
 
-<a href="{% url 'record' criminal.id %}">Past History</a>
+<div class="container" >
+	<div  class="row justify-content-center">
+		<h3 style="padding-bottom:10px;"><button type="button" class="btn btn-secondary btn-lg" disabled>Details</button></h3>
+
+<table class="table table-borderless">
+  
+  <tbody>
+    <tr>
+      <th scope="row">First Name</th>
+      <td>{{ criminal.first_name  }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Last Name</th>
+      <td>{{ criminal.last_name }}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Aadhar </th>
+      <td colspan="2">{{ criminal.aadhar_number }}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Date of Birth </th>
+      <td colspan="2">{{ criminal.dob }}</td>
+
+    </tr>
+
+      <th scope="row">Email </th>
+      <td colspan="2">{{ criminal.email }}</td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Father's Name </th>
+      <td colspan="2">{{ criminal.fathers_name }}</td>
+  
+    </tr>
+    <tr>
+      <th scope="row">Mother's Name </th>
+      <td colspan="2">{{ criminal.mothers_name }}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Mobile number </th>
+      <td colspan="2">{{ criminal.mobile_number }}</td>
+    
+    </tr>
+    <tr>
+      <th scope="row">Nationality </th>
+      <td colspan="2">{{ criminal.nationality }}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Address </th>
+      <td colspan="2">{{ criminal.address }}</td>
+
+    <tr>
+      <th scope="row">Number of family member </th>
+      <td colspan="2">{{ criminal.no_of_family_member }}</td>
+
+    </tr>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+</div>
+
+<div class="container">
+
+<a class="btn btn-outline-success" href="{% url 'record' criminal.id %}">Past History</a>
+</div>
 {% endblock %}
 

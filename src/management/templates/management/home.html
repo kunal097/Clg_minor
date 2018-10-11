@@ -1,38 +1,103 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
+{% block style %}
+
+<style type="text/css">
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+</style>
+
+{% endblock %}
+
 {% block content%}
 
 {% include "navbar.html" %}
 
-<form method="Get" action='/home' class="uniForm">
-<input type="text" name="q" placeholder="Search criminal">
-<input type="submit" name="submit">
-</form>
-
-{% if cuser.is_authorised %}
-
-<a href="{% url 'add-criminal' %}">Add Criminal </a>
 
 
 
-
-{% endif %}
-
-
-
-{# {{ obj}} #}
-{% for i in obj %}
-
-<a href="{% url 'detail' i.id %}">{{  i  }}</a>
-{% if cuser.is_authorised %}
-
-{# <input type="submit" value="Edit"><br> #}
-<a href="{% url 'update-profile' i.id%}">Edit</a>
-{% endif %}
-<br>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-{% endfor %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<div class="container" >
+    <br/>
+	<div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8">
+                            <form method="Get" action='/home' class="card card-sm">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" name="q" type="search" placeholder="Search ">
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col-auto">
+                                        <button id="search" class="btn btn-lg btn-success" style="margin-left:5px;" type="submit">Search</button>
+                                    </div>
+
+                                    <!--end of col-->
+                                </div>
+
+                            </form>
+                            {% if cuser.is_authorised %}
+
+                           <center><a href="{% url 'add-criminal' %}"  style='margin:15px;' class="btn btn-outline-success" role="button" aria-pressed="true">Add Criminal</a></center>
+
+							{% endif %}
+
+                        </div>
+                        <!--end of col-->
+                    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="result" class="container" style="">
+<table class="table " id="table">
+
+                                    <tr>
+                                   <th class="row justify-content-center">Search Result</th>
+                                      <th></th>
+                                     
+                                    </tr>
+                                    {% for i in obj %}
+
+                                
+                                    
+
+{# <input type="submit" value="Edit"><br> #}<td ><a href="{% url 'detail' i.id %}">{{  i  }}</a></td>
+											{% if cuser.is_authorised %}
+										<td><a href="{% url 'update-profile' i.id%}">Edit</a></td>
+											{% endif %}
+                                    </tr>
+                                	{% endfor %}
+</table>
+</div>
+</body>
+
 
 {% endblock %}

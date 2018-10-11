@@ -3,13 +3,13 @@
 {% block content%}
 
 {% include "navbar.html" %}
-
+<div class="container">
 <form method="Post" >
 {% csrf_token %}
 {{ form.as_p}}
 <input type="submit" name="submit">
 </form>
 
-
+</div>
 
 {% endblock %}

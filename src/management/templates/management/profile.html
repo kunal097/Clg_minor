@@ -5,11 +5,44 @@
 
 {% include "navbar.html" %}
 
-<label>Username : </label>{{ profile.user }}<br>
-<label>Name : </label>{{ profile.name }}<br>
-<label>Designation : </label>{{ profile.designation }}<br>
-<label>Police Station : </label>{{ profile.police_station }}<br>
 
-<a href="{% url 'home' %}">Home </a>
+<div class="container" >
+	<div  class="row justify-content-center">
+		<h3 style="padding-bottom:10px;"><button type="button" class="btn btn-secondary btn-lg" disabled>Profile</button></h3>
+
+<table class="table table-borderless">
+  
+  <tbody>
+    <tr>
+      <th scope="row">Username</th>
+      <td>{{ profile.user }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Name</th>
+      <td>{{ profile.name }}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Designation</th>
+      <td colspan="2">{{ profile.designation }}</td>
+
+    </tr>
+    <tr>
+      <th scope="row">Police Station</th>
+      <td colspan="2">{{ profile.police_statione }}</td>
+
+    </tr>
+
+    
+  </tbody>
+</table>
+
+</div>
+</div>
+
+<div class="container">
+
+<a class="btn btn-outline-success" href="{% url 'home' %}">Home </a>
+</div>
 
 {% endblock %}

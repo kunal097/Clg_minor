@@ -53,6 +53,29 @@
                                 </div>
 
                             </form>
+
+                            <div class="container">
+
+                            <div class="row justify-content-center" style="margin-top:10px;">
+                                <p>--Search by Image--</p>
+                          
+                                </div>
+
+                            <div class="row justify-content-center">
+
+                            <div class="file btn btn-outline-success " style="position:relative;overflow:hidden;">
+                                    <form method="post" enctype="multipart/form-data" action="{% url 'filequery' %}">
+                                        {% csrf_token %}
+                                        Upload
+                                        <input style="position:absolute;font-size:50px;opacity:0;right:0;top:0;" class="btn btn-outline-success" type="file" name="myfile">
+                                </div>
+                                        <input class="btn btn-outline-success" type="submit" name="submit">
+                                    </form>
+
+                              </div>
+                              </div>
+
+
                             {% if cuser.is_authorised %}
 
                            <center><a href="{% url 'add-criminal' %}"  style='margin:15px;' class="btn btn-outline-success" role="button" aria-pressed="true">Add Criminal</a></center>
@@ -100,7 +123,14 @@
 
 </table>
 </div>
+
+
+
+
+
+
 </body>
+
 
 
 {% endblock %}

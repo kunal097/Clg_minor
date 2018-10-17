@@ -12,7 +12,12 @@ def complete_profile(request):
 
 	# print(request.user)
 	try:
-		User.objects.get(user=request.user)
+		obj=User.objects.get(user=request.user)
+		print("778787878")
+		print(obj.is_activated)
+		if not obj.is_activated:
+			return render(request,'management/activate.html')
+
 		return redirect(home)
 	except:
 		pass
@@ -168,6 +173,7 @@ from django.views.generic.edit import CreateView
 
 class Reg_criminal(CreateView):
     model = Criminal
+    # template_name = 'management/reg_criminal.html'
     fields = '__all__'
    
 

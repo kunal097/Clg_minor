@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+{% include "navbar.html" %}
+
+	<div class="container">
+
+<form method='POST'>
+	{% csrf_token %}
+  <div class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name ">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+  <div class="form-group">
+    <label for="last_name">Last Name</label>
+    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+  <div class="form-group">
+    <label for="aadhar_number">UID Number</label>
+    <input type="text" class="form-control" id="aadhar_number" name="aadhar_number"  placeholder="Aadhar Number">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+   <div class="form-group">
+    <label for="dob">Date of Birth</label>
+    <input type="text" class="form-control" id="dob" name="dob"  placeholder="yy-mm-dd">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+  <div class="form-group">
+    <label for="fathers_name">Father's Name</label>
+    <input type="text" class="form-control" id="fathers_name" name="fathers_name"  placeholder="Father's name">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+    <div class="form-group">
+    <label for="mothers_name">Mother's Name</label>
+    <input type="text" class="form-control" id="mothers_name" name="mothers_name" placeholder="Mother's name ">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+  <div class="form-group">
+    <label for="mobile_number">Mobile Number</label>
+    <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="Contact Number">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+    <div class="form-group">
+    <label for="nationality">Nationality</label>
+    <input type="text" class="form-control" id="nationality" name="nationality"  placeholder="Nationality">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+    <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+  <div class="form-group">
+    <label for="no_of_family_member">Family Member count</label>
+    <input type="text" class="form-control" id="no_of_family_member" name="no_of_family_member" placeholder="Number of Family Member ">
+    {# <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> #}
+  </div>
+
+ 
+ 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</div>	
+
+
+{% endblock %}
+
+
